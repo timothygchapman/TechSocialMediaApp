@@ -22,8 +22,8 @@ class LoginViewController: UIViewController {
 //        Uncomment the three lines below and enter your credentials to
 //        automatically sign in everytime you launch the app.
         
-        emailTextField.text = "timothy.chapman4616@stu.mtec.edu"
-//        passwordTextField.text = "Fodcib-fegcyz-6cacdi"
+//        emailTextField.text = "timothy.chapman4616@stu.mtec.edu"
+//        passwordTextField.text = **************************
         signInButtonTapped([])
         #endif
     }
