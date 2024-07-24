@@ -65,68 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FD47A3DF2C2B12740088FDDF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FD47A3DB2C2B126A0088FDDF /* User.swift */,
-				FD47A3DD2C2B12710088FDDF /* API.swift */,
-				FD5E042C2C34DC1600ED9A9A /* Profile.swift */,
-				FD6867212C344C00002181BC /* Post.swift */,
-				FD5E042E2C34E93100ED9A9A /* PostManager.swift */,
-				FD68671F2C344B64002181BC /* Protocols.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		FD47A3E12C2B12900088FDDF /* Background */ = {
-			isa = PBXGroup;
-			children = (
-				FD9B6D062B90EBA000ECD55E /* AppDelegate.swift */,
-				FD9B6D082B90EBA000ECD55E /* SceneDelegate.swift */,
-			);
-			name = Background;
-			sourceTree = "<group>";
-		};
-		FD47A3E22C2B12A40088FDDF /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FD47A3E82C2B143B0088FDDF /* LoginViewController.swift */,
-				FD9B6D0A2B90EBA000ECD55E /* HomeViewController.swift */,
-				FD47A3EA2C2B1BB50088FDDF /* NewPostViewController.swift */,
-				FDAFF69B2C2EFD5E002EAD17 /* MyProfileTableViewController.swift */,
-				FD68671D2C3304C3002181BC /* SettingsViewController.swift */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		FD47A3E32C2B12AD0088FDDF /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				FD5E042A2C34DA9700ED9A9A /* ProfileTableViewCell.swift */,
-				FDF874132BB1D6070087AE2D /* PostTableViewCell.swift */,
-				FDF874142BB1D6070087AE2D /* MyTableViewCell.xib */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		FD47A3E42C2B12C40088FDDF /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				FD9B6D112B90EBA100ECD55E /* LaunchScreen.storyboard */,
-				FD9B6D0F2B90EBA100ECD55E /* Assets.xcassets */,
-				FD9B6D142B90EBA100ECD55E /* Info.plist */,
-			);
-			name = Other;
-			sourceTree = "<group>";
-		};
-		FD47A3E72C2B130F0088FDDF /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				FD47A3E52C2B13090088FDDF /* AuthenticationController.swift */,
-			);
-			name = Network;
-			sourceTree = "<group>";
-		};
 		FD9B6CFA2B90EBA000ECD55E = {
 			isa = PBXGroup;
 			children = (
@@ -146,13 +84,27 @@
 		FD9B6D052B90EBA000ECD55E /* YearLongProject */ = {
 			isa = PBXGroup;
 			children = (
-				FD47A3E12C2B12900088FDDF /* Background */,
-				FD47A3DF2C2B12740088FDDF /* Models */,
-				FD47A3E72C2B130F0088FDDF /* Network */,
-				FD47A3E22C2B12A40088FDDF /* View Controllers */,
-				FD47A3E32C2B12AD0088FDDF /* Cells */,
-				FD47A3E42C2B12C40088FDDF /* Other */,
+				FD9B6D062B90EBA000ECD55E /* AppDelegate.swift */,
+				FD9B6D082B90EBA000ECD55E /* SceneDelegate.swift */,
+				FD47A3DB2C2B126A0088FDDF /* User.swift */,
+				FD47A3DD2C2B12710088FDDF /* API.swift */,
+				FD5E042C2C34DC1600ED9A9A /* Profile.swift */,
+				FD6867212C344C00002181BC /* Post.swift */,
+				FD5E042E2C34E93100ED9A9A /* PostManager.swift */,
+				FD68671F2C344B64002181BC /* Protocols.swift */,
+				FD47A3E52C2B13090088FDDF /* AuthenticationController.swift */,
+				FD47A3E82C2B143B0088FDDF /* LoginViewController.swift */,
+				FD9B6D0A2B90EBA000ECD55E /* HomeViewController.swift */,
+				FD47A3EA2C2B1BB50088FDDF /* NewPostViewController.swift */,
+				FDAFF69B2C2EFD5E002EAD17 /* MyProfileTableViewController.swift */,
+				FD68671D2C3304C3002181BC /* SettingsViewController.swift */,
+				FD5E042A2C34DA9700ED9A9A /* ProfileTableViewCell.swift */,
+				FDF874132BB1D6070087AE2D /* PostTableViewCell.swift */,
+				FDF874142BB1D6070087AE2D /* MyTableViewCell.xib */,
 				FD9B6D0C2B90EBA000ECD55E /* Main.storyboard */,
+				FD9B6D112B90EBA100ECD55E /* LaunchScreen.storyboard */,
+				FD9B6D0F2B90EBA100ECD55E /* Assets.xcassets */,
+				FD9B6D142B90EBA100ECD55E /* Info.plist */,
 			);
 			path = YearLongProject;
 			sourceTree = "<group>";

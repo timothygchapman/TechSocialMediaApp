@@ -9,23 +9,19 @@ import UIKit
 
 class MyProfileTableViewController: UITableViewController, SettingsDelegate, PostCreationNotifcationDelegate {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         configureRefreshControl()
-        //        navigationItem.leftBarButtonItem = editButtonItem // needs implimentation
+//        configureEditButton()
     }
     
     func configureRefreshControl () {
-        // Add the refresh control to your UIScrollView object.
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action:
-                                        #selector(handleRefreshControl),
-                                       for: .valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
-
+    
     @objc func handleRefreshControl() {
         Task {
             do {
@@ -38,7 +34,17 @@ class MyProfileTableViewController: UITableViewController, SettingsDelegate, Pos
         }
     }
     
+    // MARK: - Customization
     
+//    func configureEditButton() {
+//        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped))
+//        editButton.tintColor = UIColor.systemBlue
+//        navigationItem.leftBarButtonItem = editButton
+//    }
+    
+//    @objc func editButtonTapped() {
+//        setEditing(!isEditing, animated: true)
+//    }
     
     // MARK: SettingsDelegate
     
@@ -55,7 +61,6 @@ class MyProfileTableViewController: UITableViewController, SettingsDelegate, Pos
         
         self.tableView.reloadData()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSettings" {
@@ -92,7 +97,6 @@ class MyProfileTableViewController: UITableViewController, SettingsDelegate, Pos
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
             let post = PostsManager.shared.myPosts[indexPath.row - 1]
             cell.configure(with: post)
-            
             return cell
         }
     }
@@ -113,30 +117,59 @@ class MyProfileTableViewController: UITableViewController, SettingsDelegate, Pos
         }
     }
     
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 {
-            return false
-        }
-        return true
-    }
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return indexPath.row != 0
+//    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                let post = PostsManager.shared.myPosts[indexPath.row - 1]
-                guard let userSecret = User.current?.secret else {
-                    print("User secret not available.")
-                    return
-                }
-                Task {
-                    do {
-                        try await PostsManager.shared.deletePost(postId: post.postid, userSecret: User.current!.secret)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                    } catch {
-                        // Handle error (e.g., show an alert)
-                        print("Failed to delete post: \(error)")
-                    }
+        if editingStyle == .delete {
+            let post = PostsManager.shared.myPosts[indexPath.row - 1]
+            guard let userSecret = User.current?.secret else {
+                print("User secret not available.")
+                return
+            }
+            Task {
+                do {
+                    try await PostsManager.shared.deletePost(postId: post.postid, userSecret: User.current!.secret)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } catch {
+                    // Handle error (e.g., show an alert)
+                    print("Failed to delete post: \(error)")
                 }
             }
         }
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard indexPath.row != 0 else { return }
+//        
+//        let post = PostsManager.shared.myPosts[indexPath.row - 1]
+//        
+//        let alertController = UIAlertController(title: "Edit Post", message: nil, preferredStyle: .alert)
+//        alertController.addTextField { textField in
+//            textField.text = post.body
+//        }
+//        
+//        // Customizing the alert controller's appearance
+//        alertController.view.tintColor = UIColor.systemBlue // Change this to your desired color
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+//            guard let updatedBody = alertController.textFields?.first?.text, !updatedBody.isEmpty else { return }
+//            
+//            Task {
+//                do {
+//                        try await PostsManager.shared.deletePost(postId: post.postid, userSecret: User.current!.secret)
+//                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+//                } catch {
+//                    print("Failed to update post:", error)
+//                }
+//            }
+//        }
+//        
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(saveAction)
+//        
+//        present(alertController, animated: true, completion: nil)
+//    }
+}

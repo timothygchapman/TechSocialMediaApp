@@ -35,35 +35,32 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            // Dismiss keyboard if return key is pressed
             if text == "\n" {
                 textView.resignFirstResponder()
                 return false
             }
-            
-            // Determine the character limit based on the textView
+
             let characterLimit: Int
             if textView.tag == 1 {
-                characterLimit = 130 // Set character limit for textView1
+                characterLimit = 130
             } else if textView.tag == 2 {
-                characterLimit = 75 // Set character limit for textView2
+                characterLimit = 75
             } else {
-                characterLimit = 0 // Default or fallback character limit
+                characterLimit = 0
             }
             
-            // Check if the new text exceeds the character limit
             let currentText = textView.text ?? ""
             let newText = (currentText as NSString).replacingCharacters(in: range, with: text)
             return newText.count <= characterLimit || characterLimit == 0
         }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Calculate the new text
+        
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
 
-        // Set your desired character limit here
+        
         let characterLimit = 20
 
         return updatedText.count <= characterLimit

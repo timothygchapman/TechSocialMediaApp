@@ -30,7 +30,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func configureRefreshControl () {
-        // Add the refresh control to your UIScrollView object.
         self.table.refreshControl = UIRefreshControl()
         self.table.refreshControl?.addTarget(self, action:
                                         #selector(handleRefreshControl),
@@ -93,26 +92,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-
-    
-//    func deletePost(at indexPath: IndexPath) {
-//        let post = PostsManager.shared.posts[indexPath.row]
-//        let userSecret = User.current?.secret.uuidString
-//        
-//        PostsManager.shared.deletePost(postId: post.postid, userSecret: userSecret) { result in
-//            switch result {
-//            case .success:
-//                DispatchQueue.main.async {
-//                    PostsManager.shared.posts.remove(at: indexPath.row)
-//                    self.table.deleteRows(at: [indexPath], with: .automatic)
-//                }
-//            case .failure(let error):
-//                print("Failed to delete post:", error)
-//            }
-//        }
-//    }
-    
     func editPost(post: Post) {
         let userSecret = UUID() // Replace with actual user secret
         
@@ -121,7 +100,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             case .success(let updatedPost):
                 DispatchQueue.main.async {
                     if let index = PostsManager.shared.posts.firstIndex(where: { $0.postid == updatedPost.postid }) {
-//                        PostsManager.shared.posts[index] = updatedPost
                         self.table.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                     }
                 }
@@ -149,13 +127,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func didCreatePost(_ post: Post) {
         Task {
-//            do {
                 self.table.reloadData()
-//            } catch {
-//                print("Failed to create post.")
-//            }
         }
     }
 }
 
-//        PostsManager.shared.posts.append(post)
+

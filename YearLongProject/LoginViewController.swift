@@ -23,8 +23,8 @@ class LoginViewController: UIViewController {
 //        automatically sign in everytime you launch the app.
         
 //        emailTextField.text = "timothy.chapman4616@stu.mtec.edu"
-//        passwordTextField.text = **************************
-        signInButtonTapped([])
+//        passwordTextField.text = ****
+//        signInButtonTapped([])
         #endif
     }
 
